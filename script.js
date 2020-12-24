@@ -20,21 +20,13 @@ function generatePassword() {
   // Converts the user entered string to a number
   passwordLength = parseFloat(passwordLength);
   console.log(passwordLength);
-  // Validates that the user input is a number and an integer, and reprompts the user if not
-  while ((passwordLength === NaN) || (Number.isInteger(passwordLength) === false)) {
-    alert("Please enter an integer value.");
+  // Validates that the user input is a number, an integer, and in the desired range of characters
+  while ((passwordLength === NaN) || (Number.isInteger(passwordLength) === false) || (passwordLength < 8) || (passwordLength > 128)) {
+    alert("Please enter an integer value between 8 and 128.");
+    // Reprompts user if conditions are not met
     var passwordLength = prompt("How many characters should your password be?");
     console.log(passwordLength);
     passwordLength = parseFloat(passwordLength);
-    console.log(passwordLength);
-  }
-  // Checks if the desired password length is too short or too long
-  while (passwordLength < 8 || passwordLength > 128) {
-    alert("Passwords must be at least 8 characters and at most 128 characters.");
-    // Reprompts user if this is the case
-    var passwordLength = prompt("How many characters should your password be?");
-    console.log(passwordLength);
-    passwordLength = parseInt(passwordLength, 10);
     console.log(passwordLength);
   }
   // A series of confirm windows asking the user what types of characters should be included
