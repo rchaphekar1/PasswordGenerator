@@ -6,7 +6,7 @@ var lowerCaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
 var upperCaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numericCharacterArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 var specialCharacterArray = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
-// Records array in console
+// Records array in console to ensure functionality
 console.log(lowerCaseArray);
 console.log(upperCaseArray);
 console.log(numericCharacterArray);
@@ -17,11 +17,19 @@ function generatePassword() {
   // Prompts the user to enter the number of characters, and saves it as variable passwordLength
   var passwordLength = prompt("How many characters should your password be?");
   console.log(passwordLength);
-  // Converts the user entered string to an integer
-  passwordLength = parseInt(passwordLength, 10);
+  // Converts the user entered string to a number
+  passwordLength = parseFloat(passwordLength);
   console.log(passwordLength);
+  // Validates that the user input is a number and an integer, and reprompts the user if not
+  while ((passwordLength === NaN) || (Number.isInteger(passwordLength) === false)) {
+    alert("Please enter an integer value.");
+    var passwordLength = prompt("How many characters should your password be?");
+    console.log(passwordLength);
+    passwordLength = parseFloat(passwordLength);
+    console.log(passwordLength);
+  }
   // Checks if the desired password length is too short or too long
-  if (passwordLength < 8 || passwordLength > 128) {
+  while (passwordLength < 8 || passwordLength > 128) {
     alert("Passwords must be at least 8 characters and at most 128 characters.");
     // Reprompts user if this is the case
     var passwordLength = prompt("How many characters should your password be?");
