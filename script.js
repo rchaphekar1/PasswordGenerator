@@ -17,7 +17,7 @@ function generatePassword() {
   // Prompts the user to enter the number of characters, and saves it as variable passwordLength
   var passwordLength = prompt("How many characters should your password be?");
   console.log(passwordLength);
-  // Converts the user entered string to a number
+  // Converts the user entered string to a number and returns NaN if it is not
   passwordLength = parseFloat(passwordLength);
   console.log(passwordLength);
   // Validates that the user input is a number, an integer, and in the desired range of characters
@@ -39,7 +39,7 @@ function generatePassword() {
   console.log(numericCharacter);
   console.log(specialCharacter);
   // Checks to see if no character types were selected, and alerts the user if so
-  if ((lowerCase !== true) && (upperCase !== true) && (numericCharacter !== true) && (specialCharacter !== true)) {
+  while ((lowerCase !== true) && (upperCase !== true) && (numericCharacter !== true) && (specialCharacter !== true)) {
     alert("Please select at least one character type.");
     // Reprompts the user if this is the case
     var lowerCase = confirm("Should lower case letters be included?");
